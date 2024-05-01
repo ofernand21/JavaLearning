@@ -1,4 +1,4 @@
-package com.mycompany.method;
+package com.mycompany.Method;
 
 public class Method {
   public float convertCelciusToFahrenheit(float celcius) {

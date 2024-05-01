@@ -45,6 +45,10 @@ public class Persone implements InterfacePerson {
     return this.nom;
   }
 
+  public String getNumero() {
+    return this.numero;
+  }
+
   @Override
   public String toString() {
     return this.nom + " a pour numéro " + this.numero;

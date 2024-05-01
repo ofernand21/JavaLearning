@@ -7,26 +7,24 @@ package com.mycompany.javalearning;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.classes.Persone;
+import com.mycompany.Method.Method;
 import com.mycompany.interfaces.NombrePremier;
 import com.mycompany.interfaces.Sum;
-import com.mycompany.method.Method;
 
 /**
  *
  * @author fernand
  */
-public class JavaLearnibg {
+public class JavaLearning {
 
     /**
      * @param args
@@ -98,11 +96,11 @@ public class JavaLearnibg {
         .add(30)
         .add(579).build();
         
-        Optional<Integer> sums = streams.reduce((a, b) -> a + b);
+        // Optional<Integer> sums = streams.reduce((a, b) -> a + b);
 
-        // ! Impossible d'utiliser une stream 2 fois
-        List<Integer> newList = streams.toList();
-        newList.forEach(System.out::println);
+        // // ! Impossible d'utiliser une stream 2 fois
+        // List<Integer> newList = streams.toList();
+        // newList.forEach(System.out::println);
 
         // Filtrage avec 
         List<Persone> list = Arrays.asList(
@@ -111,8 +109,12 @@ public class JavaLearnibg {
         );
 
         Map<Object, Object> map = list.stream()
-                .collect(Collectors.toMap(v -> v.getName(), v -> v.getNumero()));
-                
+                .collect(Collectors.toMap(Persone::getName, Persone::getNumero));
+
+        for (Map.Entry<Object , Object> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
         System.out.println(map);
     }
 }
