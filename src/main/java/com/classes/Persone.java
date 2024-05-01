@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import com.mycompany.Interface.InterfacePerson;
+import com.mycompany.interfaces.InterfacePerson;
 
 public class Persone implements InterfacePerson {
   private String nom;
@@ -34,6 +34,15 @@ public class Persone implements InterfacePerson {
       }
     }
     return Optional.ofNullable(null);
+  }
+
+  public int isNumber(final String numero) {
+    Objects.requireNonNull(numero, "Fournir le nom svp");
+    return Integer.valueOf(numero);
+  }
+
+  public String getName() {
+    return this.nom;
   }
 
   @Override

@@ -5,16 +5,22 @@
 package com.mycompany.javalearning;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.classes.Persone;
-import com.mycompany.Interface.NombrePremier;
-import com.mycompany.Interface.Sum;
-import com.mycompany.Method.Method;
+import com.mycompany.interfaces.NombrePremier;
+import com.mycompany.interfaces.Sum;
+import com.mycompany.method.Method;
 
 /**
  *
@@ -37,7 +43,7 @@ public class JavaLearnibg {
         }
 
         List<String> liste = new ArrayList<>();
-        liste.add("Fernand");
+        liste.add("Fernando");
         liste.add("Ouedrao");
         liste.add("Mohamed");
         liste.add("Alamofire");
@@ -48,8 +54,7 @@ public class JavaLearnibg {
             System.out.println(liste.get(i));
         }
 
-        Predicate<Integer>  predicate = value -> value >= 0;
-
+        Predicate<Integer>  predicate = value -> Integer.signum(value) != -1;
         Boolean isTest = predicate.test(20);
         System.out.println(isTest);
 
@@ -86,5 +91,28 @@ public class JavaLearnibg {
         if (searchPersone.isPresent()) {
             System.out.println(searchPersone.get().toString());
         }
+
+        Stream<Integer> streams = Stream.<Integer>builder()
+        .add(1)
+        .add(20)
+        .add(30)
+        .add(579).build();
+        
+        Optional<Integer> sums = streams.reduce((a, b) -> a + b);
+
+        // ! Impossible d'utiliser une stream 2 fois
+        List<Integer> newList = streams.toList();
+        newList.forEach(System.out::println);
+
+        // Filtrage avec 
+        List<Persone> list = Arrays.asList(
+            new Persone("Fernandez", "68789544"),
+            new Persone("Ol", "548766")
+        );
+
+        Map<Object, Object> map = list.stream()
+                .collect(Collectors.toMap(v -> v.getName(), v -> v.getNumero()));
+                
+        System.out.println(map);
     }
 }

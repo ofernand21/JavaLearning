@@ -1,8 +1,8 @@
-package com.mycompany.Method;
+package com.mycompany.method;
 
 public class Method {
   public float convertCelciusToFahrenheit(float celcius) {
-    return 9/5*celcius + 12;
+    return (float)9/5*celcius + 12;
   }
 
   public static float calculeSurfaceRectangle(float longeur, float largeur) {
