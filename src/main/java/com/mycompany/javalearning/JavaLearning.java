@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.classes.Persone;
-import com.mycompany.Method.Method;
 import com.mycompany.interfaces.NombrePremier;
 import com.mycompany.interfaces.Sum;
+import com.mycompany.method.Method;
 
 /**
  *
@@ -96,11 +96,12 @@ public class JavaLearning {
         .add(30)
         .add(579).build();
         
-        // Optional<Integer> sums = streams.reduce((a, b) -> a + b);
+        Optional<Integer> sums = streams.reduce((a, b) -> a + b);
+        System.out.println(sums);
 
-        // // ! Impossible d'utiliser une stream 2 fois
-        // List<Integer> newList = streams.toList();
-        // newList.forEach(System.out::println);
+        // ! Impossible d'utiliser une stream 2 fois
+        List<Integer> newList = streams.toList();
+        newList.forEach(System.out::println);
 
         // Filtrage avec 
         List<Persone> list = Arrays.asList(
